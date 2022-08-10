@@ -24,3 +24,16 @@ a {
     background: black;
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl tracking-tight font-extrabold text-center my-2;
+  }
+  input {
+    @apply p-1
+  }
+}
