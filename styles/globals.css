@@ -34,6 +34,6 @@ a {
     @apply text-4xl tracking-tight font-extrabold text-center my-2;
   }
   input {
-    @apply p-1
+    @apply p-1;
   }
 }
