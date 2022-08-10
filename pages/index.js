@@ -3,9 +3,13 @@ import Head from "next/head";
 import ProductCard from "../components/productCard";
 import {Products} from '../products/products';
 
-export default function Home() {
+export async function getStaticProps() {
+  return {props: {productList: Products}};
+}
 
-  let productCards = Products.map(product=>{
+export default function Home({productList}) {
+
+  let productCards = productList.map(product=>{
     return <ProductCard key={product.name} product={product} />
   })
 
