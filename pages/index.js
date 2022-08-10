@@ -3,6 +3,8 @@ import Head from "next/head";
 import ProductCard from "../components/productCard";
 import {Products} from '../products/products';
 import { useState } from "react";
+import { useMessage } from "../hooks/useMessage";
+import AddedMsg from "../components/addedMsg";
 
 export async function getStaticProps() {
   return {props: {productList: Products}};
@@ -11,6 +13,7 @@ export async function getStaticProps() {
 export default function Home({productList}) {
 
   const [cart, setCart] = useState([]);
+  const [addedMessage, setAddedMessage] = useMessage();
 
   function findItemInCart(product, cart) {
     let index = null;
@@ -33,6 +36,7 @@ export default function Home({productList}) {
       cartCopy.push(newItem)
     }
     setCart(cartCopy);
+    setAddedMessage(`Item added to cart`);
   }
 
   function editCartQty(product, newQty) {
@@ -58,6 +62,7 @@ export default function Home({productList}) {
           {productCards}
         </div>
       </div>
+      {addedMessage !== "" ? <AddedMsg message={addedMessage} /> : null}
     </Layout>
   )
 }
