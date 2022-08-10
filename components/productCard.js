@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, addToCart }) {
 
     return (
         <div className="group h-[28rem] w-[20rem] bg-white m-2 border border-gray-300 rounded shadow-sm cursor-pointer">
@@ -24,7 +24,12 @@ export default function ProductCard({ product }) {
                         <p className="text-sm text-gray-500">Price</p>
                         <p className="font-semibold">${product.price}</p>
                     </div>
-                    <button className="border border-gray-300 rounded p-2 font-semibold transition ease-in-out duration-300 hover:bg-blue-500 hover:text-white">Add to cart</button>
+                    <button 
+                        className="border border-gray-300 rounded p-2 font-semibold transition ease-in-out duration-300 hover:bg-blue-500 hover:text-white"
+                        onClick={()=>addToCart(product)}
+                    >
+                        Add to cart
+                    </button>
                 </div>
             </div>
         </div>
