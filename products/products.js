@@ -1,4 +1,4 @@
-export default Products = [
+export const Products = [
     {
         category: "T-Shirt",
         brand: "Boss",
@@ -53,7 +53,7 @@ export default Products = [
             "Composition": ["100% Cotton"],
             "Country of origin": "Italy"
         },
-        image: "images/versace-heart-tshirt.jpg"
+        image: "/images/versace-heart-tshirt.jpg"
     },
     {
         category: "Sneakers",
@@ -76,7 +76,7 @@ export default Products = [
             ],
             "Country of origin": "Italy"
         },
-        image: "images/dolce-sneaker.jpg"
+        image: "/images/dolce-sneaker.jpg"
     },
     {
         category: "Sandals",
@@ -98,7 +98,7 @@ export default Products = [
                 "Upper: 100% Elastodiene (Rubber)"
             ]
         },
-        image: "images/lacoste-sandals.jpg"
+        image: "/images/lacoste-sandals.jpg"
     },
     {
         category: "Hoodie",
@@ -119,7 +119,7 @@ export default Products = [
                 "100% Cotton"
             ]
         },
-        image: "images/espirit-hoodie.jpg"
+        image: "/images/espirit-hoodie.jpg"
     },
     {
         category: "T-Shirt",
@@ -137,7 +137,7 @@ export default Products = [
                 "100% Cotton"
             ]
         },
-        image: "images/polo-tshirt.jpg"
+        image: "/images/polo-tshirt.jpg"
     },
     {
         category: "T-Shirt",
@@ -158,6 +158,6 @@ export default Products = [
                 "5% Elastane (Spandex/Lycra)"
             ]
         },
-        image: "images/batman-tshirt.jpg"
+        image: "/images/batman-tshirt.jpg"
     }
 ]
