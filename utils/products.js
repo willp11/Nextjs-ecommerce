@@ -11,11 +11,6 @@ export const getProductNames = () => {
 }
 
 export const getProductData = (id) => {
-    for (let i=0; i<Products.length; i++) {
-        let product = Products[i];
-        if (product.id === parseInt(id)) {
-            return product;
-        }
-    }
-    return null;
+    const product = Products.find(product => product.id === parseInt(id)) ?? null;
+    return product;
 }

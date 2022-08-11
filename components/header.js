@@ -15,8 +15,11 @@ export default function Header() {
 
     useEffect(()=>{
         if (cart.value > oldValueRef.current) {
-        setMessage("Item added to cart");
-        oldValueRef.current = cart.value;
+            setMessage("Item added to cart");
+            oldValueRef.current = cart.value;
+        } else if (cart.value < oldValueRef.current) {
+            setMessage("Item removed from cart");
+            oldValueRef.current = cart.value;
         }
     }, [cart])
 

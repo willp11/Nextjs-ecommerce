@@ -16,7 +16,7 @@ const addItem = (state, product, quantity) => {
             quantity
         }
     }
-    return {
+    let updatedCart = {
         ...state,
         items: {
             ...state.items,
@@ -25,6 +25,7 @@ const addItem = (state, product, quantity) => {
         value: Math.max(0, state.value + (product.price * quantity)),
         total_qty: Math.max(0, state.total_qty + quantity)
     }
+    return updatedCart;
 }
 
 const removeItem = (state, product, quantity) => {
@@ -33,7 +34,7 @@ const removeItem = (state, product, quantity) => {
         item.quantity -= quantity;
     } else return state;
 
-    return {
+    let updatedCart = {
         ...state,
         items: {
             ...state.items,
@@ -42,6 +43,7 @@ const removeItem = (state, product, quantity) => {
         value: Math.max(0, state.value - (product.price * quantity)),
         total_qty: Math.max(0, state.total_qty - quantity)
     }
+    return updatedCart;
 }
 
 const clearCart = () => {
@@ -64,6 +66,7 @@ const cartReducer = (state, action) => {
 export const CartContext = React.createContext();
 
 export const CartProvider = ({children}) => {
+
     const [cart, dispatch] = useReducer(cartReducer, initialCart);
 
     const contextValue = useMemo(()=>{
