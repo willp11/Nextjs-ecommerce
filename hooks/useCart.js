@@ -1,4 +1,5 @@
-import React, { useContext, useMemo, useReducer } from "react";
+import React, { useContext, useEffect, useMemo, useReducer } from "react";
+import useLocalStorageReducer from "./useLocalStorageReducer";
 
 const initialCart = {
     items: {},
@@ -67,7 +68,13 @@ export const CartContext = React.createContext();
 
 export const CartProvider = ({children}) => {
 
-    const [cart, dispatch] = useReducer(cartReducer, initialCart);
+    // const [cart, dispatch] = useReducer(cartReducer, initialCart);
+
+    const [cart, dispatch] = useLocalStorageReducer(
+        'cart',
+        cartReducer,
+        initialCart
+    );
 
     const contextValue = useMemo(()=>{
         return [cart, dispatch]
@@ -79,6 +86,7 @@ export const CartProvider = ({children}) => {
 }
 
 export const useCart = () => {
+
     const [cart, dispatch] = useContext(CartContext);
 
     const addItem = (product, quantity) => {
@@ -86,7 +94,7 @@ export const useCart = () => {
     }
     const removeItem = (product, quantity) => dispatch({type: "REMOVE_ITEM", product, quantity});
     const clearCart = () => dispatch({type: "CLEAR_CART"});
-
+    
     return {
         cart,
         addItem,
