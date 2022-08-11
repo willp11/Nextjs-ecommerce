@@ -2,9 +2,10 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import ProductCard from "../components/productCard";
 import {Products} from '../products/products';
-import { useState } from "react";
-import { useMessage } from "../hooks/useMessage";
-import AddedMsg from "../components/addedMsg";
+import UpdateCartMsg from "../components/updateCartMsg";
+import { useCart } from "../hooks/useCart";
+import { useMessage } from '../hooks/useMessage';
+import { useEffect, useRef } from "react";
 
 export async function getStaticProps() {
   return {props: {productList: Products}};
@@ -12,48 +13,26 @@ export async function getStaticProps() {
 
 export default function Home({productList}) {
 
-  const [cart, setCart] = useState([]);
-  const [addedMessage, setAddedMessage] = useMessage();
+  const {cart} = useCart();
+  const [message, setMessage] = useMessage();
+  const oldValueRef = useRef(0)
 
-  function findItemInCart(product, cart) {
-    let index = null;
-    cart.forEach((item, idx)=>{
-      if (item.product.name === product.name) {
-        index = idx;
-      }
-    })
-    return index;
-  }
-
-  function addToCart(product) {
-    let cartCopy = [...cart];
-    let indexInCart = findItemInCart(product, cartCopy);
-    if (indexInCart !== null) {
-      cartCopy[indexInCart].quantity++;
+  useEffect(()=>{
+    if (cart.value > oldValueRef.current) {
+      setMessage("Item added to cart");
+      oldValueRef.current = cart.value;
+    } else if (cart.value < oldValueRef.current) {
+      setMessage("Item removed from cart");
+      oldValueRef.current = cart.value;
     }
-    else {
-      let newItem = {product, quantity: 1}
-      cartCopy.push(newItem)
-    }
-    setCart(cartCopy);
-    setAddedMessage(`Item added to cart`);
-  }
-
-  function editCartQty(product, newQty) {
-    let cartCopy = [...cart];
-    let indexInCart = findItemInCart(product, cartCopy);
-    if (indexInCart !== null) {
-      cartCopy[indexInCart].quantity = newQty
-    }
-    setCart(cartCopy);
-  }
+  }, [cart])
 
   let productCards = productList.map(product=>{
-    return <ProductCard key={product.name} product={product} addToCart={addToCart}/>
+    return <ProductCard key={product.name} product={product} />
   })
 
   return (
-    <Layout cart={cart}>
+    <Layout>
       <Head>
         <title>E-commerce with Next.js</title>
       </Head>
@@ -62,7 +41,7 @@ export default function Home({productList}) {
           {productCards}
         </div>
       </div>
-      {addedMessage !== "" ? <AddedMsg message={addedMessage} /> : null}
+      {message !== "" ? <UpdateCartMsg message={message} /> : null}
     </Layout>
   )
 }

@@ -1,9 +1,9 @@
 import Header from "./header";
 
-export default function Layout({ children, cart }) {
+export default function Layout({ children }) {
     return (
         <div>
-            <Header cart={cart} />
+            <Header />
             {children}
         </div>
     )

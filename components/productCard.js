@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { useCart } from "../hooks/useCart";
 
-export default function ProductCard({ product, addToCart }) {
+export default function ProductCard({ product }) {
+
+    const { addItem } = useCart();
 
     return (
         <div className="group h-[28rem] w-[20rem] bg-white m-2 border border-gray-300 rounded shadow-sm cursor-pointer">
@@ -26,7 +29,7 @@ export default function ProductCard({ product, addToCart }) {
                     </div>
                     <button 
                         className="border border-gray-300 rounded p-2 font-semibold transition ease-in-out duration-300 hover:bg-blue-500 hover:text-white"
-                        onClick={()=>addToCart(product)}
+                        onClick={()=>addItem(product, 1)}
                     >
                         Add to cart
                     </button>
