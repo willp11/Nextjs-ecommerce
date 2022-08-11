@@ -44,12 +44,18 @@ const removeItem = (state, product, quantity) => {
     }
 }
 
+const clearCart = () => {
+    return initialCart;
+}
+
 const cartReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_ITEM':
             return addItem(state, action.product, action.quantity);
         case 'REMOVE_ITEM':
             return removeItem(state, action.product, action.quantity);
+        case 'CLEAR_CART':
+            return clearCart();
         default:
             return state;
     }
@@ -76,10 +82,12 @@ export const useCart = () => {
         dispatch({type: "ADD_ITEM", product, quantity})
     }
     const removeItem = (product, quantity) => dispatch({type: "REMOVE_ITEM", product, quantity});
+    const clearCart = () => dispatch({type: "CLEAR_CART"});
 
     return {
         cart,
         addItem,
-        removeItem
+        removeItem,
+        clearCart
     }
 }

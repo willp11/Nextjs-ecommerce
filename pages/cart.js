@@ -4,7 +4,7 @@ import CartItem from "../components/cartItem";
 
 export default function Cart() {
 
-    const {cart} = useCart();
+    const {cart, clearCart} = useCart();
 
     let cartItems = Object.keys(cart.items).map((key)=>{
         let item = cart.items[key];
@@ -25,7 +25,7 @@ export default function Cart() {
                         <h1 className="text-4xl tracking-tight font-extrabold my-2 text-left">Your Cart</h1>
                         <div className="flex items-center ml-2">
                             <h2 className="text-lg font-semibold">{cart.total_qty} {cart.total_qty === 1 ? "item" : "items"}</h2>
-                            <p className="text-base text-gray-500 ml-4 cursor-pointer hover:text-black">(Clear All)</p>
+                            <p className="text-base text-gray-500 ml-4 cursor-pointer hover:text-black" onClick={clearCart}>(Clear All)</p>
                         </div>
                         {cartItems}
                         <h2 className="text-lg font-semibold ml-2 mt-2">Total: ${cart.value}</h2>
