@@ -21,9 +21,6 @@ export default function Home({productList}) {
     if (cart.value > oldValueRef.current) {
       setMessage("Item added to cart");
       oldValueRef.current = cart.value;
-    } else if (cart.value < oldValueRef.current) {
-      setMessage("Item removed from cart");
-      oldValueRef.current = cart.value;
     }
   }, [cart])
 

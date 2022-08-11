@@ -28,7 +28,7 @@ const addItem = (state, product, quantity) => {
 }
 
 const removeItem = (state, product, quantity) => {
-    let item = state?.item?.[product.name];
+    let item = state?.items?.[product.name];
     if (item) {
         item.quantity -= quantity;
     } else return state;

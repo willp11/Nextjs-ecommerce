@@ -1,14 +1,6 @@
-import CheckCircleIcon from "./icons/checkCircleIcon";
-import XCircleIcon from "./icons/xCircleIcon";
+import { CheckCircleIcon } from "@heroicons/react/outline";
 
 export default function UpdateCartMsg({message}) {
-    let icon = null;
-    if (message === "Item added to cart") {
-        icon = <CheckCircleIcon />
-    } else if (message === "Item removed from cart") {
-        icon = <XCircleIcon />
-    }
-
     return (
         <div 
             className={`fixed top-3 left-1/2 -translate-x-1/2 z-10
@@ -16,7 +8,7 @@ export default function UpdateCartMsg({message}) {
                     flex items-center justify-evenly 
                     border border-gray-300 rounded shadow-md`}
         >   
-            {icon}
+            <CheckCircleIcon className="h-[24px] w-[24px] stroke-green-600" />
             <p>{message}</p>
         </div>
     )

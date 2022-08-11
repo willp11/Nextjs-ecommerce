@@ -1,4 +1,4 @@
-import ShoppingCartIcon from "./icons/shoppingCartIcon";
+import {ShoppingCartIcon} from '@heroicons/react/solid';
 import { useCart } from "../hooks/useCart";
 import { useRouter } from "next/router";
 
@@ -15,8 +15,8 @@ export default function Header() {
                     className="flex items-center cursor-pointer group"
                     onClick={()=>router.push("/cart")}
                 >
-                    <ShoppingCartIcon />
-                    <p className="text-lg">${cart.value.toFixed(2)}</p>
+                    <ShoppingCartIcon className="h-[28px] w-[28px] cursor-pointer transition ease-in-out duration-300 fill-gray-600 group-hover:fill-black" />
+                    <p className="text-lg ml-1">${cart.value.toFixed(2)}</p>
                     <p className="text-gray-500 pl-1">({cart.total_qty})</p>
                 </div>
             </div>

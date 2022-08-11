@@ -1,34 +1,15 @@
 import Layout from "../components/layout";
 import Head from "next/head";
 import { useCart } from "../hooks/useCart";
-import Image from "next/image";
+import CartItem from "../components/cartItem";
 
 export default function Cart() {
 
-    const {cart, removeItem} = useCart();
+    const {cart} = useCart();
 
     let cartItems = Object.keys(cart.items).map((key)=>{
-        console.log(key)
         let item = cart.items[key];
-        return (
-            <div className="w-full mx-1 my-4 px-2 py-4 border border-gray-200 rounded-md shadow-md flex justify-start items-center overflow-x-auto">
-                <div className="h-[100px] min-w-[100px]">
-                    <Image
-                        src={item.image}
-                        height={100}
-                        width={100}
-                        alt={item.name}
-                    />
-                </div>
-                <div>
-                    <p className="text-lg font-semibold truncate">{item.name}</p>
-                    <div className="flex pt-2">
-                        <p>- {item.quantity} +</p>
-                        <p className="ml-8">x ${item.price}</p>
-                    </div>
-                </div>
-            </div>
-        )
+        return <CartItem key={key} item={item} />
     })
 
     return (
@@ -45,7 +26,10 @@ export default function Cart() {
                             <p className="text-base text-gray-500 ml-4 cursor-pointer hover:text-black">(Clear All)</p>
                         </div>
                         {cartItems}
-                        <h2 className="text-lg font-semibold ml-2">Total: ${cart.value}</h2>
+                        <h2 className="text-lg font-semibold ml-2 mt-2">Total: ${cart.value}</h2>
+                        <button className="ml-2 mt-2 px-2 py-1 rounded font-semibold bg-blue-500 text-white hover:bg-blue-700 transition ease-in-out duration-300">
+                            Go to checkout
+                        </button>
                     </div>
                 </div>
             </div>
