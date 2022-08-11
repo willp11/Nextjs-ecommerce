@@ -1,4 +1,3 @@
-import Layout from "../components/layout";
 import Head from "next/head";
 import { useCart } from "../hooks/useCart";
 import CartItem from "../components/cartItem";
@@ -13,7 +12,7 @@ export default function Cart() {
     })
 
     return (
-        <Layout>
+        <>
             <Head>
                 <title>MyShop Cart</title>
             </Head>
@@ -33,6 +32,6 @@ export default function Cart() {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </>
     )
 }

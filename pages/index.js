@@ -1,11 +1,6 @@
-import Layout from "../components/layout";
 import Head from "next/head";
 import ProductCard from "../components/productCard";
 import {Products} from '../products/products';
-import UpdateCartMsg from "../components/updateCartMsg";
-import { useCart } from "../hooks/useCart";
-import { useMessage } from '../hooks/useMessage';
-import { useEffect, useRef } from "react";
 
 export async function getStaticProps() {
   return {props: {productList: Products}};
@@ -13,23 +8,12 @@ export async function getStaticProps() {
 
 export default function Home({productList}) {
 
-  const {cart} = useCart();
-  const [message, setMessage] = useMessage();
-  const oldValueRef = useRef(0)
-
-  useEffect(()=>{
-    if (cart.value > oldValueRef.current) {
-      setMessage("Item added to cart");
-      oldValueRef.current = cart.value;
-    }
-  }, [cart])
-
   let productCards = productList.map(product=>{
     return <ProductCard key={product.name} product={product} />
   })
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>E-commerce with Next.js</title>
       </Head>
@@ -38,7 +22,6 @@ export default function Home({productList}) {
           {productCards}
         </div>
       </div>
-      {message !== "" ? <UpdateCartMsg message={message} /> : null}
-    </Layout>
+    </>
   )
 }

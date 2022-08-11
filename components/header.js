@@ -1,11 +1,24 @@
 import {ShoppingCartIcon} from '@heroicons/react/solid';
 import { useCart } from "../hooks/useCart";
 import { useRouter } from "next/router";
+import UpdateCartMsg from "../components/updateCartMsg";
+import { useRef, useEffect } from 'react';
+import { useMessage } from '../hooks/useMessage';
 
 export default function Header() {
 
     const router = useRouter();
     const {cart} = useCart();
+
+    const [message, setMessage] = useMessage();
+    const oldValueRef = useRef(0)
+
+    useEffect(()=>{
+        if (cart.value > oldValueRef.current) {
+        setMessage("Item added to cart");
+        oldValueRef.current = cart.value;
+        }
+    }, [cart])
 
     return (
         <div className="w-full h-[80px] px-6 py-2 border-b-2 border-gray-200 flex items-center justify-center">
@@ -20,6 +33,7 @@ export default function Header() {
                     <p className="text-gray-500 pl-1">({cart.total_qty})</p>
                 </div>
             </div>
+            {message !== "" ? <UpdateCartMsg message={message} /> : null}
         </div>
     )
 }
