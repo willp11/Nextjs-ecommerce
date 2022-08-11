@@ -1,5 +1,6 @@
 export const Products = [
     {
+        id: 1,
         category: "T-Shirt",
         brand: "Boss",
         name: "Geometric Print Logo Polo Shirt in Navy",
@@ -18,6 +19,7 @@ export const Products = [
         image: "/images/boss-tshirt.jpg"
     },
     {
+        id: 2,
         category: "Hoodie",
         brand: "Polo Ralph Lauren",
         name: "Polo Print Zipped Logo Hoodie in Navy",
@@ -38,6 +40,7 @@ export const Products = [
         image: "/images/ralph-lauren-hoodie.jpg"
     },
     {
+        id: 3,
         category: "T-Shirt",
         brand: "Versace",
         name: "Love Hearts Logo T-Shirt in Black",
@@ -56,6 +59,7 @@ export const Products = [
         image: "/images/versace-heart-tshirt.jpg"
     },
     {
+        id: 4,
         category: "Sneakers",
         brand: "Dolce & Gabbana",
         name: "Contrasting Logo Classic Sneakers in White",
@@ -79,6 +83,7 @@ export const Products = [
         image: "/images/dolce-sneaker.jpg"
     },
     {
+        id: 5,
         category: "Sandals",
         brand: "Lacoste",
         name: "Iconic Crocodile Slide Sandals in Green",
@@ -101,6 +106,7 @@ export const Products = [
         image: "/images/lacoste-sandals.jpg"
     },
     {
+        id: 6,
         category: "Hoodie",
         brand: "ESprit",
         name: "Sharks Print All Over Zipped Hoodie in Light Green",
@@ -122,6 +128,7 @@ export const Products = [
         image: "/images/espirit-hoodie.jpg"
     },
     {
+        id: 7,
         category: "T-Shirt",
         brand: "Polo Ralph Lauren",
         name: "Logo T-Shirt in Moss Green",
@@ -140,6 +147,7 @@ export const Products = [
         image: "/images/polo-tshirt.jpg"
     },
     {
+        id: 8,
         category: "T-Shirt",
         brand: "Name It",
         name: "Batman Skateboard Print Organic T-Shirt in Blue",

@@ -30,9 +30,6 @@ a {
 @tailwind utilities;
 
 @layer base {
-  h1 {
-    @apply text-4xl tracking-tight font-extrabold my-2;
-  }
   input {
     @apply p-1;
   }
